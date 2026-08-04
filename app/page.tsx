@@ -39,6 +39,14 @@ const projects = [
       "系统梳理产业链与市场空间口径，汇总龙头企业与竞争格局要点，与团队共同完成约 5 万字研究报告。",
     tags: ["产业链", "市场空间", "竞争格局"],
   },
+  {
+    period: "本科期间",
+    title: "矿产资源租金跨国实证研究",
+    role: "研究参与者",
+    description:
+      "围绕 ICT 产品出口、环境技术创新与矿产资源租金的关系开展跨国实证研究；英文论文《The impact of ICT goods exports and environmental technology innovation on mineral rents: Evidence from OECD countries》已被 PLOS ONE 录用。",
+    tags: ["实证研究", "OECD 国家", "PLOS ONE"],
+  },
 ];
 
 const campusExperiences = [
@@ -86,13 +94,14 @@ const competitionAwards = [
   { year: "2024", title: "全国大学生市场调查与分析大赛", result: "国家级三等奖 · 核心成员" },
   { year: "2024", title: "全国大学生节能减排社会实践与科技竞赛", result: "国家级三等奖" },
   { year: "2023", title: "“先控杯”河北省大学生节能减排社会实践与科技竞赛", result: "省级一等奖" },
+  { year: "2023", title: "ICAN 大学生创新创业大赛", result: "省级二等奖" },
 ];
 
 const honors = [
   "国家奖学金",
   "硕士学业一等奖学金",
   "校级二等奖学金 3 次、三等奖学金 2 次",
-  "多次获评校级三好学生",
+  "校级三好学生 3 次",
   "党建之星、优秀团干部、优秀团员标兵、优秀志愿者",
   "第五期“头雁领航”研究生骨干综合能力培训班学员",
 ];
@@ -155,7 +164,8 @@ export default function Home() {
           <a href="#experience">经历</a>
           <a href="#projects">项目</a>
           <a href="#campus">校园</a>
-          <a href="#achievements">荣誉</a>
+          <a href="#competitions">竞赛</a>
+          <a href="#honors">荣誉</a>
         </nav>
         <a className="resume-button" href="/resume.pdf" download>
           下载简历
@@ -166,10 +176,12 @@ export default function Home() {
         <aside className="profile-card" aria-label="个人信息">
           <div className="portrait-frame">
             <img
-              src="/profile.jpg"
+              src="/profile-2026.jpg"
               alt="董慕含证件照"
               width={234}
               height={348}
+              loading="eager"
+              fetchPriority="high"
             />
           </div>
           <p className="profile-kicker">Industry Research</p>
@@ -336,32 +348,39 @@ export default function Home() {
             </div>
           </section>
 
-          <section className="panel" id="achievements">
+          <section className="panel" id="competitions">
             <div className="section-heading">
               <div>
-                <p className="eyebrow">AWARDS & HONORS</p>
-                <h2>竞赛奖项与荣誉</h2>
+                <p className="eyebrow">COMPETITION AWARDS</p>
+                <h2>竞赛奖项</h2>
               </div>
               <span className="section-index">05</span>
             </div>
-            <div className="achievement-layout">
-              <div className="competition-list">
-                {competitionAwards.map((award) => (
-                  <article className="competition-item" key={award.title}>
-                    <span>{award.year}</span>
-                    <div>
-                      <h3>{award.title}</h3>
-                      <p>{award.result}</p>
-                    </div>
-                  </article>
-                ))}
-              </div>
-              <div className="honors-card">
+            <div className="competition-list competition-list-wide">
+              {competitionAwards.map((award) => (
+                <article className="competition-item" key={award.title}>
+                  <span>{award.year}</span>
+                  <div>
+                    <h3>{award.title}</h3>
+                    <p>{award.result}</p>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </section>
+
+          <section className="panel" id="honors">
+            <div className="section-heading">
+              <div>
                 <p className="eyebrow">SELECTED HONORS</p>
-                <ul>
-                  {honors.map((honor) => <li key={honor}>{honor}</li>)}
-                </ul>
+                <h2>荣誉</h2>
               </div>
+              <span className="section-index">06</span>
+            </div>
+            <div className="honors-card honors-card-wide">
+              <ul>
+                {honors.map((honor) => <li key={honor}>{honor}</li>)}
+              </ul>
             </div>
           </section>
 
@@ -371,7 +390,7 @@ export default function Home() {
                 <p className="eyebrow">VOLUNTEER SERVICE</p>
                 <h2>志愿服务</h2>
               </div>
-              <span className="section-index">06</span>
+              <span className="section-index">07</span>
             </div>
             <div className="service-grid">
               {volunteerServices.map((service) => (
@@ -393,7 +412,7 @@ export default function Home() {
                 <p className="eyebrow">CAPABILITIES</p>
                 <h2>专业技能</h2>
               </div>
-              <span className="section-index">07</span>
+              <span className="section-index">08</span>
             </div>
             <div className="skill-list">
               {skills.map((skill) => (

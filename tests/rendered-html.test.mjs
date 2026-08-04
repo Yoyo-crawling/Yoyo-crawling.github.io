@@ -39,9 +39,10 @@ test("server-renders the completed resume homepage", async () => {
   const html = await response.text();
   assert.match(html, /<html[^>]*lang="zh-CN"/i);
   assert.match(html, /href="\/resume\.pdf"/);
-  assert.match(html, /src="\/profile\.jpg"/);
+  assert.match(html, /src="\/profile-2026\.jpg"/);
   assert.match(html, /校园经历/);
-  assert.match(html, /竞赛奖项与荣誉/);
+  assert.match(html, /竞赛奖项/);
+  assert.match(html, />荣誉</);
   assert.match(html, /志愿服务/);
   assert.match(html, /中国国际大学生创新大赛/);
   assert.match(html, /一起云支教/);
@@ -72,14 +73,14 @@ test("keeps required public assets and removes starter preview code", async () =
     readFile(new URL("../package.json", import.meta.url), "utf8"),
   ]);
 
-  assert.match(page, /profile\.jpg/);
+  assert.match(page, /profile-2026\.jpg/);
   assert.match(page, /resume\.pdf/);
   assert.match(layout, /og\.png/);
   assert.match(layout, /lang="zh-CN"/);
   assert.doesNotMatch(packageJson, /react-loading-skeleton/);
 
   await Promise.all([
-    access(new URL("../public/profile.jpg", import.meta.url)),
+    access(new URL("../public/profile-2026.jpg", import.meta.url)),
     access(new URL("../public/resume.pdf", import.meta.url)),
     access(new URL("../public/og.png", import.meta.url)),
   ]);

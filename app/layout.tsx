@@ -10,8 +10,8 @@ export const metadata: Metadata = {
   title,
   description,
   icons: {
-    icon: "/profile.jpg",
-    shortcut: "/profile.jpg",
+    icon: "/profile-2026.jpg",
+    shortcut: "/profile-2026.jpg",
   },
   openGraph: {
     title,
