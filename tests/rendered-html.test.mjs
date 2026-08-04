@@ -51,7 +51,7 @@ test("server-renders the completed resume homepage", async () => {
 
 test("server-renders every internship detail page", async () => {
   for (const route of detailRoutes) {
-    const response = await render(route);
+    const response = await render(`${route}/`);
     assert.equal(response.status, 200, route);
     const html = await response.text();
     assert.match(html, /INTERNSHIP EXPERIENCE/, route);

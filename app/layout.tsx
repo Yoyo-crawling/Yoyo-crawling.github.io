@@ -1,44 +1,31 @@
 import type { Metadata } from "next";
-import { headers } from "next/headers";
 import "./globals.css";
 
-export async function generateMetadata(): Promise<Metadata> {
-  const requestHeaders = await headers();
-  const host =
-    requestHeaders.get("x-forwarded-host") ??
-    requestHeaders.get("host") ??
-    "localhost:3000";
-  const protocol =
-    requestHeaders.get("x-forwarded-proto") ??
-    (host.startsWith("localhost") ? "http" : "https");
-  const baseUrl = new URL(`${protocol}://${host}`);
-  const title = "董慕含｜行业研究与战略咨询";
-  const description =
-    "董慕含的个人主页，展示行业研究、战略咨询、审计与数据分析相关经历。";
-  const previewImage = new URL("/og.png", baseUrl).toString();
+const title = "董慕含｜行业研究与战略咨询";
+const description =
+  "董慕含的个人主页，展示行业研究、战略咨询、审计与数据分析相关经历。";
 
-  return {
-    metadataBase: baseUrl,
+export const metadata: Metadata = {
+  metadataBase: new URL("https://yoyo-crawling.github.io/"),
+  title,
+  description,
+  icons: {
+    icon: "/profile.jpg",
+    shortcut: "/profile.jpg",
+  },
+  openGraph: {
     title,
     description,
-    icons: {
-      icon: "/profile.jpg",
-      shortcut: "/profile.jpg",
-    },
-    openGraph: {
-      title,
-      description,
-      type: "website",
-      images: [{ url: previewImage, width: 1728, height: 909, alt: title }],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title,
-      description,
-      images: [previewImage],
-    },
-  };
-}
+    type: "website",
+    images: [{ url: "/og.png", width: 1728, height: 909, alt: title }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title,
+    description,
+    images: ["/og.png"],
+  },
+};
 
 export default function RootLayout({
   children,
