@@ -127,16 +127,41 @@ a { color: inherit; text-decoration: none; }
 .project-tags { position: relative; display: flex; flex-wrap: wrap; gap: 7px; margin-top: auto; padding-top: 20px; }
 .project-tags span { padding: 6px 9px; border: 1px solid rgba(255,255,255,.18); border-radius: 999px; color: #f0f3f7; font-size: 11px; }
 
-.capability-grid { display: grid; grid-template-columns: 1.2fr .8fr; gap: 20px; }
+.campus-list { display: grid; gap: 14px; }
+.campus-card { padding: 26px 28px; display: grid; grid-template-columns: 170px 1fr; gap: 30px; border: 1px solid var(--line); border-radius: 20px; transition: transform .2s ease, border-color .2s ease; }
+.campus-card:hover { transform: translateY(-2px); border-color: #c8ceff; }
+.campus-meta { display: flex; flex-direction: column; gap: 8px; }
+.campus-meta span { color: var(--muted); font-size: 12px; }
+.campus-meta strong { color: var(--blue); font-size: 13px; line-height: 1.55; }
+.campus-card h3 { margin: 0 0 12px; font-size: 20px; }
+.campus-card ul { margin: 0; padding-left: 1.2em; display: grid; gap: 7px; color: #4b5869; font-size: 14px; line-height: 1.75; }
+.campus-card li::marker { color: var(--orange); }
+
+.achievement-layout { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(270px, .75fr); gap: 20px; align-items: start; }
+.competition-list { display: grid; border-top: 1px solid var(--line); }
+.competition-item { padding: 18px 4px; display: grid; grid-template-columns: 58px 1fr; gap: 16px; border-bottom: 1px solid var(--line); }
+.competition-item > span { padding-top: 3px; color: var(--blue); font-size: 12px; font-weight: 850; }
+.competition-item h3 { margin: 0; font-size: 16px; line-height: 1.55; }
+.competition-item p { margin: 6px 0 0; color: var(--muted); font-size: 13px; }
+.honors-card { padding: 28px; background: #fff4ed; border-radius: 20px; }
+.honors-card .eyebrow { color: #c75c2e; }
+.honors-card ul { margin: 18px 0 0; padding-left: 1.15em; display: grid; gap: 13px; font-size: 14px; line-height: 1.65; }
+.honors-card li::marker { color: var(--orange); }
+
+.service-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+.service-card { min-height: 255px; padding: 26px; display: flex; flex-direction: column; background: #f6f7fa; border: 1px solid transparent; border-radius: 20px; transition: transform .2s ease, border-color .2s ease, background .2s ease; }
+.service-card:hover { transform: translateY(-2px); border-color: #c8ceff; background: var(--blue-soft); }
+.service-date { margin: 0 0 14px; color: var(--blue); font-size: 12px; font-weight: 800; }
+.service-card h3 { margin: 0 0 12px; font-size: 19px; line-height: 1.45; }
+.service-card > p:not(.service-date) { margin: 0; color: #4d5b6e; font-size: 14px; line-height: 1.8; }
+.service-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; padding-top: 18px; }
+.service-tags span { padding: 6px 9px; color: var(--muted); background: white; border-radius: 999px; font-size: 11px; }
+
 .skill-list { display: grid; }
 .skill-row { padding: 18px 4px; display: grid; grid-template-columns: 100px 1fr; gap: 18px; border-bottom: 1px solid var(--line); }
 .skill-row:first-child { border-top: 1px solid var(--line); }
 .skill-row span { color: var(--muted); font-size: 13px; }
 .skill-row strong { font-size: 14px; line-height: 1.6; }
-.award-card { padding: 26px; background: #fff4ed; border-radius: 20px; }
-.award-card .eyebrow { color: #c75c2e; }
-.award-card ul { margin: 18px 0 0; padding-left: 1.15em; display: grid; gap: 13px; font-size: 14px; line-height: 1.6; }
-.award-card li::marker { color: var(--orange); }
 
 footer { padding: 12px 6px 0; display: flex; justify-content: space-between; color: var(--muted); font-size: 12px; }
 footer a:hover { color: var(--blue); }
@@ -183,7 +208,7 @@ footer a:hover { color: var(--blue); }
   .profile-card { padding: 24px; }
   .panel { padding: 40px 34px; }
   .metric-grid { grid-template-columns: repeat(2, 1fr); }
-  .project-grid, .capability-grid { grid-template-columns: 1fr; }
+  .project-grid, .achievement-layout { grid-template-columns: 1fr; }
   .detail-content-grid { grid-template-columns: 1fr; }
   .method-card { position: static; }
 }
@@ -214,6 +239,9 @@ footer a:hover { color: var(--blue); }
   .experience-card { padding: 22px; }
   .experience-topline { flex-direction: column; gap: 5px; }
   .project-grid { grid-template-columns: 1fr; }
+  .campus-card { grid-template-columns: 1fr; gap: 12px; padding: 22px; }
+  .service-grid { grid-template-columns: 1fr; }
+  .service-card { min-height: 230px; }
   .skill-row { grid-template-columns: 82px 1fr; }
   .detail-shell { padding: 12px 12px 38px; }
   .detail-nav { min-height: 58px; margin-bottom: 12px; padding: 8px 8px 8px 16px; }

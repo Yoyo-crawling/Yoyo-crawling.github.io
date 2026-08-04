@@ -41,11 +41,98 @@ const projects = [
   },
 ];
 
-const awards = [
-  "中国国际大学生创新大赛国家级银奖",
-  "“挑战杯”国家级三等奖",
-  "全国大学生市场调查与分析大赛国家级三等奖",
-  "国家奖学金、硕士学业一等奖学金",
+const campusExperiences = [
+  {
+    period: "2025.09 — 至今",
+    organization: "华中科技大学经济学院党员建设中心",
+    role: "办公室成员 / 宣讲团成员",
+    bullets: [
+      "提出党建学时查询机制改进建议，并依据细则核验各党支部学时统计表，支持数据归集与学时认定。",
+      "参与党史知识竞赛等活动的组织支持，并以“十五五”为主题开展宣讲。",
+    ],
+  },
+  {
+    period: "2025.09 — 至今",
+    organization: "华中科技大学经济学院研究生会",
+    role: "权益部成员",
+    bullets: [
+      "参与“权心为你，益路同行”权益小贴士长期专栏，设计问题收集表并整理学生需求。",
+      "参与“对话大师”读书会等校园活动，承担部分环节主持与现场协作。",
+    ],
+  },
+  {
+    period: "本科期间",
+    organization: "东北大学经济学院",
+    role: "班级团支书 / 军训负责人",
+    bullets: [
+      "负责班团活动组织、信息传达与同学协调；军训期间承担队伍组织与日常沟通。",
+      "获优秀团干部、优秀团员标兵及军训先进个人等荣誉。",
+    ],
+  },
+  {
+    period: "2024.03 — 本科期间",
+    organization: "新青年全球胜任力人才培养计划",
+    role: "入选学员",
+    bullets: [
+      "入选校内限额培养项目，参与全球议题、跨文化沟通与国际胜任力相关学习。",
+    ],
+  },
+];
+
+const competitionAwards = [
+  { year: "2024", title: "中国国际大学生创新大赛", result: "国家级银奖 · 核心成员" },
+  { year: "2023", title: "第十八届“挑战杯”全国大学生课外学术科技作品竞赛", result: "国家级三等奖 · 核心成员" },
+  { year: "2024", title: "全国大学生可再生能源优秀科技作品竞赛", result: "国家级二等奖" },
+  { year: "2024", title: "全国大学生市场调查与分析大赛", result: "国家级三等奖 · 核心成员" },
+  { year: "2024", title: "全国大学生节能减排社会实践与科技竞赛", result: "国家级三等奖" },
+  { year: "2023", title: "“先控杯”河北省大学生节能减排社会实践与科技竞赛", result: "省级一等奖" },
+];
+
+const honors = [
+  "国家奖学金",
+  "硕士学业一等奖学金",
+  "校级二等奖学金 3 次、三等奖学金 2 次",
+  "多次获评校级三好学生",
+  "党建之星、优秀团干部、优秀团员标兵、优秀志愿者",
+  "第五期“头雁领航”研究生骨干综合能力培训班学员",
+];
+
+const volunteerServices = [
+  {
+    period: "2025 — 2026",
+    title: "学术会议与校园公共服务",
+    description:
+      "参与健康经济与公共政策会议、第八届张培刚发展经济学青年学者奖颁奖典礼等活动，承担会场组织、嘉宾接待、记录摄影与宣传工作，完成 4 篇学院官网推文。",
+    tags: ["会务组织", "嘉宾接待", "内容宣传"],
+  },
+  {
+    period: "2023.01 — 2023.02",
+    title: "“一起云支教”专项活动志愿者",
+    description:
+      "累计服务 40 余天，对接 2 名小学生，围绕时政、科学与经济知识开展线上互动，培养学习兴趣并跟进学习任务。",
+    tags: ["线上支教", "沟通陪伴", "知识分享"],
+  },
+  {
+    period: "本科期间",
+    title: "商都县普通话助教",
+    description:
+      "与主讲教师协作，对接并督促 5 名学员完成课程与作业，其中 1 名学员获评优秀学员。",
+    tags: ["教学协作", "学员跟进", "普通话推广"],
+  },
+  {
+    period: "2023.06 — 2023.08",
+    title: "“翱翔之翼”大学生科技志愿服务项目",
+    description:
+      "担任调研组志愿者，参与资料搜集、调研分析与团队协作，并随团队完成调研报告。",
+    tags: ["科技志愿", "社会调研", "报告撰写"],
+  },
+  {
+    period: "2023 — 2024",
+    title: "大型赛事志愿服务",
+    description:
+      "连续参与秦皇岛马拉松暨全国马拉松锦标赛分站赛，并担任第九届中国大学生程序设计大赛引导组志愿者。",
+    tags: ["赛事保障", "现场引导", "团队协作"],
+  },
 ];
 
 const skills = [
@@ -67,7 +154,8 @@ export default function Home() {
           <a href="#about">关于我</a>
           <a href="#experience">经历</a>
           <a href="#projects">项目</a>
-          <a href="#skills">技能</a>
+          <a href="#campus">校园</a>
+          <a href="#achievements">荣誉</a>
         </nav>
         <a className="resume-button" href="/resume.pdf" download>
           下载简历
@@ -109,9 +197,7 @@ export default function Home() {
             </div>
           </div>
 
-          <p className="privacy-note">
-            当前为本地预览版本，公开发布前可选择隐藏电话号码。
-          </p>
+          <p className="privacy-note">公开联系方式仅用于招聘与职业交流。</p>
         </aside>
 
         <div className="content-column">
@@ -224,29 +310,98 @@ export default function Home() {
             </div>
           </section>
 
+          <section className="panel" id="campus">
+            <div className="section-heading">
+              <div>
+                <p className="eyebrow">CAMPUS LEADERSHIP</p>
+                <h2>校园经历</h2>
+              </div>
+              <span className="section-index">04</span>
+            </div>
+            <div className="campus-list">
+              {campusExperiences.map((item) => (
+                <article className="campus-card" key={`${item.organization}-${item.role}`}>
+                  <div className="campus-meta">
+                    <span>{item.period}</span>
+                    <strong>{item.role}</strong>
+                  </div>
+                  <div>
+                    <h3>{item.organization}</h3>
+                    <ul>
+                      {item.bullets.map((bullet) => <li key={bullet}>{bullet}</li>)}
+                    </ul>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </section>
+
+          <section className="panel" id="achievements">
+            <div className="section-heading">
+              <div>
+                <p className="eyebrow">AWARDS & HONORS</p>
+                <h2>竞赛奖项与荣誉</h2>
+              </div>
+              <span className="section-index">05</span>
+            </div>
+            <div className="achievement-layout">
+              <div className="competition-list">
+                {competitionAwards.map((award) => (
+                  <article className="competition-item" key={award.title}>
+                    <span>{award.year}</span>
+                    <div>
+                      <h3>{award.title}</h3>
+                      <p>{award.result}</p>
+                    </div>
+                  </article>
+                ))}
+              </div>
+              <div className="honors-card">
+                <p className="eyebrow">SELECTED HONORS</p>
+                <ul>
+                  {honors.map((honor) => <li key={honor}>{honor}</li>)}
+                </ul>
+              </div>
+            </div>
+          </section>
+
+          <section className="panel" id="volunteer">
+            <div className="section-heading">
+              <div>
+                <p className="eyebrow">VOLUNTEER SERVICE</p>
+                <h2>志愿服务</h2>
+              </div>
+              <span className="section-index">06</span>
+            </div>
+            <div className="service-grid">
+              {volunteerServices.map((service) => (
+                <article className="service-card" key={service.title}>
+                  <p className="service-date">{service.period}</p>
+                  <h3>{service.title}</h3>
+                  <p>{service.description}</p>
+                  <div className="service-tags">
+                    {service.tags.map((tag) => <span key={tag}>{tag}</span>)}
+                  </div>
+                </article>
+              ))}
+            </div>
+          </section>
+
           <section className="panel" id="skills">
             <div className="section-heading">
               <div>
                 <p className="eyebrow">CAPABILITIES</p>
-                <h2>技能与荣誉</h2>
+                <h2>专业技能</h2>
               </div>
-              <span className="section-index">04</span>
+              <span className="section-index">07</span>
             </div>
-            <div className="capability-grid">
-              <div className="skill-list">
-                {skills.map((skill) => (
-                  <div className="skill-row" key={skill.label}>
-                    <span>{skill.label}</span>
-                    <strong>{skill.value}</strong>
-                  </div>
-                ))}
-              </div>
-              <div className="award-card">
-                <p className="eyebrow">SELECTED HONORS</p>
-                <ul>
-                  {awards.map((award) => <li key={award}>{award}</li>)}
-                </ul>
-              </div>
+            <div className="skill-list">
+              {skills.map((skill) => (
+                <div className="skill-row" key={skill.label}>
+                  <span>{skill.label}</span>
+                  <strong>{skill.value}</strong>
+                </div>
+              ))}
             </div>
           </section>
 

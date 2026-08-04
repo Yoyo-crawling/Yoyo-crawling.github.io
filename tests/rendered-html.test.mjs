@@ -40,6 +40,11 @@ test("server-renders the completed resume homepage", async () => {
   assert.match(html, /<html[^>]*lang="zh-CN"/i);
   assert.match(html, /href="\/resume\.pdf"/);
   assert.match(html, /src="\/profile\.jpg"/);
+  assert.match(html, /校园经历/);
+  assert.match(html, /竞赛奖项与荣誉/);
+  assert.match(html, /志愿服务/);
+  assert.match(html, /中国国际大学生创新大赛/);
+  assert.match(html, /一起云支教/);
   for (const route of detailRoutes) {
     assert.match(html, new RegExp(`href="${route}"`));
   }
