@@ -51,6 +51,16 @@ test("server-renders the completed resume homepage", async () => {
   assert.match(html, /基本研判(?:<!-- -->)?：/);
   assert.match(html, /财务估值(?:<!-- -->)?：/);
   assert.match(html, /风险尽调(?:<!-- -->)?：/);
+  assert.match(html, /秦皇岛市康养旅游调查/);
+  assert.match(html, /有效回收率 83\.56%/);
+  assert.match(html, /海“钠”百川/);
+  assert.match(html, /FNPV 221\.62 万元/);
+  assert.match(html, /IRR 24\.75%/);
+  assert.match(html, /东西湖区对外贸易发展的总体规划/);
+  assert.match(html, /湖北鄂州空港综保区/);
+  assert.match(html, /两类钠离子电池正极材料/);
+  assert.match(html, /中国国际大学生创新大赛国家级银奖/);
+  assert.ok((html.match(/class="project-intro"/g) ?? []).length >= 6);
   assert.match(html, /P0—P2 共 12 项尽调清单/);
   assert.match(html, /基于公开年报自行测算/);
   for (const route of detailRoutes) {
