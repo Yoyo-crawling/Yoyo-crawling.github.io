@@ -27,32 +27,68 @@ const projects = [
     period: "2026.06",
     title: "传神语联（835737.NQ）投资分析案例",
     role: "个人项目",
-    description:
-      "整合 2016—2026 年 104 份公告、2019—2025 年年报及行业资料，搭建“赛道—公司—估值—风险”研究框架并完成 16 页投资分析报告。基于公开年报自行测算 AI 业务占比 49.8%、扣非净利润同比增长 403%、经营现金流同比增长 203%等拐点，同时定位毛利率两年下降 10.6 个百分点、研发资本化率 57%等风险；以个人情景假设完成 PS 2.5x/3.5x/6.0x 三情景估值，对应市值 12/16.8/28.8 亿元。梳理 17 次关联交易、12 次对外担保及两次 IPO 撤回，形成 P0—P2 共 12 项尽调清单与“有条件通过”建议。",
+    points: [
+      {
+        label: "基本研判",
+        text: "整合 2016—2026 年 104 份公告、2019—2025 年年报及行业资料，搭建“赛道—公司—估值—风险”研究框架并完成 16 页投资分析报告。",
+      },
+      {
+        label: "财务估值",
+        text: "基于公开年报自行测算 AI 业务占比 49.8%、扣非净利润同比增长 403%、经营现金流同比增长 203%等拐点，定位毛利率两年下降 10.6 个百分点、研发资本化率 57%等风险；以个人情景假设完成 PS 2.5x/3.5x/6.0x 三情景估值，对应市值 12/16.8/28.8 亿元。",
+      },
+      {
+        label: "风险尽调",
+        text: "梳理 17 次关联交易、12 次对外担保及两次 IPO 撤回，形成 P0—P2 共 12 项尽调清单与“有条件通过”建议。",
+      },
+    ],
     tags: ["公司研究", "财务分析", "PS 估值", "风险尽调"],
   },
   {
     period: "2026.02 — 2026.05",
     title: "湖北省综合保税区扩能提质研究项目",
     role: "项目成员",
-    description:
-      "参与实地调研，处理与提炼 20 万字以上座谈纪要，建立问题清单与证据索引；围绕新港空港综保区开展机制诊断，并撰写调研总结、问题诊断与对策建议章节。",
+    points: [
+      {
+        label: "调研处理",
+        text: "参与实地调研，处理与提炼 20 万字以上座谈纪要，建立问题清单与证据索引。",
+      },
+      {
+        label: "机制诊断",
+        text: "围绕新港空港综保区开展机制诊断，并撰写调研总结、问题诊断与对策建议章节。",
+      },
+    ],
     tags: ["政策研究", "实地调研", "报告写作"],
   },
   {
     period: "2025.06 — 2025.09",
     title: "飞机拆解与再制造产业研究项目",
     role: "项目成员",
-    description:
-      "系统梳理产业链与市场空间口径，汇总龙头企业与竞争格局要点，与团队共同完成约 5 万字研究报告。",
+    points: [
+      {
+        label: "产业研究",
+        text: "系统梳理产业链与市场空间口径，汇总龙头企业与竞争格局要点。",
+      },
+      {
+        label: "报告交付",
+        text: "与团队共同完成约 5 万字研究报告。",
+      },
+    ],
     tags: ["产业链", "市场空间", "竞争格局"],
   },
   {
     period: "本科期间",
     title: "矿产资源租金跨国实证研究",
     role: "研究参与者",
-    description:
-      "围绕 ICT 产品出口、环境技术创新与矿产资源租金的关系开展跨国实证研究；英文论文《The impact of ICT goods exports and environmental technology innovation on mineral rents: Evidence from OECD countries》已被 PLOS ONE 录用。",
+    points: [
+      {
+        label: "实证研究",
+        text: "围绕 ICT 产品出口、环境技术创新与矿产资源租金的关系开展跨国实证研究。",
+      },
+      {
+        label: "论文成果",
+        text: "英文论文《The impact of ICT goods exports and environmental technology innovation on mineral rents: Evidence from OECD countries》已被 PLOS ONE 录用。",
+      },
+    ],
     tags: ["实证研究", "OECD 国家", "PLOS ONE"],
   },
 ];
@@ -321,7 +357,14 @@ export default function Home() {
                   <div className="project-number">0{index + 1}</div>
                   <p className="project-date">{project.period} · {project.role}</p>
                   <h3>{project.title}</h3>
-                  <p>{project.description}</p>
+                  <ul className="project-points">
+                    {project.points.map((point) => (
+                      <li key={point.label}>
+                        <strong>{point.label}：</strong>
+                        <span>{point.text}</span>
+                      </li>
+                    ))}
+                  </ul>
                   <div className="project-tags">
                     {project.tags.map((tag) => <span key={tag}>{tag}</span>)}
                   </div>

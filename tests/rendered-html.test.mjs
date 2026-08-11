@@ -47,6 +47,10 @@ test("server-renders the completed resume homepage", async () => {
   assert.match(html, /中国国际大学生创新大赛/);
   assert.match(html, /一起云支教/);
   assert.match(html, /传神语联（835737\.NQ）投资分析案例/);
+  assert.match(html, /class="project-points"/);
+  assert.match(html, /基本研判(?:<!-- -->)?：/);
+  assert.match(html, /财务估值(?:<!-- -->)?：/);
+  assert.match(html, /风险尽调(?:<!-- -->)?：/);
   assert.match(html, /P0—P2 共 12 项尽调清单/);
   assert.match(html, /基于公开年报自行测算/);
   for (const route of detailRoutes) {
