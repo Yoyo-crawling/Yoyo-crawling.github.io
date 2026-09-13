@@ -259,6 +259,7 @@ export default function Home() {
           <a href="#about">关于我</a>
           <a href="#experience">经历</a>
           <a href="#projects">项目</a>
+          <Link href="/portfolio">成果</Link>
           <a href="#campus">校园</a>
           <a href="#competitions">竞赛</a>
           <a href="#honors">荣誉</a>
@@ -339,6 +340,11 @@ export default function Home() {
                 ))}
               </div>
             </div>
+            <Link className="portfolio-cta" href="/portfolio">
+              <span>SELECTED WORK</span>
+              <strong>查看研究成果与案例证据</strong>
+              <em>进入成果展示页 →</em>
+            </Link>
           </section>
 
           <section className="panel" id="education">

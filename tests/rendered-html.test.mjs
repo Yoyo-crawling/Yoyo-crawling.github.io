@@ -40,6 +40,7 @@ test("server-renders the completed resume homepage", async () => {
   assert.match(html, /<html[^>]*lang="zh-CN"/i);
   assert.match(html, /href="\/resume\.pdf"/);
   assert.match(html, /src="\/profile-2026\.jpg"/);
+  assert.match(html, /href="\/portfolio"/);
   assert.match(html, /校园经历/);
   assert.match(html, /竞赛奖项/);
   assert.match(html, />荣誉</);
@@ -83,6 +84,26 @@ test("server-renders every internship detail page", async () => {
   }
 });
 
+test("server-renders the evidence-based portfolio page", async () => {
+  const response = await render("/portfolio/");
+  assert.equal(response.status, 200);
+  const html = await response.text();
+
+  assert.match(html, /成果展示/);
+  assert.match(html, /从全球镍数据到原料配比决策/);
+  assert.match(html, /从平台诊断到双轨落地/);
+  assert.match(html, /综合保税区扩能提质/);
+  assert.match(html, /飞机拆解与再制造项目可行性研究/);
+  assert.match(html, /从国别环境到产业落点/);
+  assert.match(html, /传神语联（835737\.NQ）投资分析案例/);
+  assert.match(html, /\/portfolio\/nickel\/04-cost-model\.png/);
+  assert.match(html, /\/portfolio\/consulting\/01-method\.png/);
+  assert.match(html, /\/portfolio\/transn\/06-checklist\.png/);
+  assert.match(html, /现场照片包含人员、车牌或敏感设施/);
+  assert.match(html, /原图含时点性数据和待复核口径/);
+  assert.doesNotMatch(html, /禅城城建_资产结构分析|需复核\.png/);
+});
+
 test("keeps required public assets and removes starter preview code", async () => {
   const [page, layout, packageJson] = await Promise.all([
     readFile(new URL("../app/page.tsx", import.meta.url), "utf8"),
@@ -100,6 +121,9 @@ test("keeps required public assets and removes starter preview code", async () =
     access(new URL("../public/profile-2026.jpg", import.meta.url)),
     access(new URL("../public/resume.pdf", import.meta.url)),
     access(new URL("../public/og.png", import.meta.url)),
+    access(new URL("../public/portfolio/nickel/04-cost-model.png", import.meta.url)),
+    access(new URL("../public/portfolio/consulting/01-method.png", import.meta.url)),
+    access(new URL("../public/portfolio/transn/06-checklist.png", import.meta.url)),
   ]);
   await assert.rejects(
     access(new URL("../app/_sites-preview/SkeletonPreview.tsx", templateRoot)),
