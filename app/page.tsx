@@ -22,7 +22,17 @@ const education = [
   },
 ];
 
-const projects = [
+type Project = {
+  period: string;
+  title: string;
+  role: string;
+  intro: string;
+  points: { label: string; text: string }[];
+  tags: string[];
+  evidence?: { src: string; alt: string; caption: string }[];
+};
+
+const projects: Project[] = [
   {
     period: "2026.06",
     title: "传神语联（835737.NQ）投资分析案例",
@@ -44,6 +54,14 @@ const projects = [
       },
     ],
     tags: ["公司研究", "财务分析", "PS 估值", "风险尽调"],
+    evidence: [
+      { src: "/portfolio/transn/01-overview.png", alt: "传神语联投资概要", caption: "投资概要与核心判断" },
+      { src: "/portfolio/transn/02-business-model.png", alt: "传神语联商业模式分析", caption: "商业模式与收入结构" },
+      { src: "/portfolio/transn/03-valuation.png", alt: "传神语联估值分析", caption: "可比公司与退出路径" },
+      { src: "/portfolio/transn/04-diligence.png", alt: "传神语联尽调分析", caption: "关联交易与对外担保" },
+      { src: "/portfolio/transn/05-recommendation.png", alt: "传神语联投资建议", caption: "估值情景与决策条件" },
+      { src: "/portfolio/transn/06-checklist.png", alt: "传神语联尽调清单", caption: "尽调优先级与验证路径" },
+    ],
   },
   {
     period: "2026.02 — 2026.05",
@@ -259,7 +277,6 @@ export default function Home() {
           <a href="#about">关于我</a>
           <a href="#experience">经历</a>
           <a href="#projects">项目</a>
-          <Link href="/portfolio">成果</Link>
           <a href="#campus">校园</a>
           <a href="#competitions">竞赛</a>
           <a href="#honors">荣誉</a>
@@ -340,11 +357,6 @@ export default function Home() {
                 ))}
               </div>
             </div>
-            <Link className="portfolio-cta" href="/portfolio">
-              <span>SELECTED WORK</span>
-              <strong>查看研究成果与案例证据</strong>
-              <em>进入成果展示页 →</em>
-            </Link>
           </section>
 
           <section className="panel" id="education">
@@ -430,6 +442,21 @@ export default function Home() {
                   <div className="project-tags">
                     {project.tags.map((tag) => <span key={tag}>{tag}</span>)}
                   </div>
+                  {project.evidence && (
+                    <details className="project-evidence">
+                      <summary>查看代表性成果</summary>
+                      <div className="evidence-gallery project-evidence-gallery">
+                        {project.evidence.map((item) => (
+                          <figure key={item.src}>
+                            <a href={item.src} target="_blank" rel="noreferrer" aria-label={`查看大图：${item.caption}`}>
+                              <img src={item.src} alt={item.alt} loading="lazy" />
+                            </a>
+                            <figcaption>{item.caption}<span>查看大图 ↗</span></figcaption>
+                          </figure>
+                        ))}
+                      </div>
+                    </details>
+                  )}
                 </article>
               ))}
             </div>

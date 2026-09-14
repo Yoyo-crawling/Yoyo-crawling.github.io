@@ -63,6 +63,23 @@ export function ExperienceDetailPage({ experience }: { experience: Experience })
           </div>
         </section>
 
+        {experience.evidence && (
+          <section className="detail-section evidence-section">
+            <p className="eyebrow">SELECTED WORK</p>
+            <h2>代表性成果</h2>
+            <div className="evidence-gallery">
+              {experience.evidence.map((item) => (
+                <figure key={item.src}>
+                  <a href={item.src} target="_blank" rel="noreferrer" aria-label={`查看大图：${item.caption}`}>
+                    <img src={item.src} alt={item.alt} loading="lazy" />
+                  </a>
+                  <figcaption>{item.caption}<span>查看大图 ↗</span></figcaption>
+                </figure>
+              ))}
+            </div>
+          </section>
+        )}
+
         <footer className="detail-footer">
           <Link href="/#experience">← 返回全部实习经历</Link>
           <a href="mailto:d15246378505@163.com">联系我</a>

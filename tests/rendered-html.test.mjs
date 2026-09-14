@@ -40,7 +40,7 @@ test("server-renders the completed resume homepage", async () => {
   assert.match(html, /<html[^>]*lang="zh-CN"/i);
   assert.match(html, /href="\/resume\.pdf"/);
   assert.match(html, /src="\/profile-2026\.jpg"/);
-  assert.match(html, /href="\/portfolio"/);
+  assert.doesNotMatch(html, /href="\/portfolio"/);
   assert.match(html, /校园经历/);
   assert.match(html, /竞赛奖项/);
   assert.match(html, />荣誉</);
@@ -64,12 +64,13 @@ test("server-renders the completed resume homepage", async () => {
   assert.ok((html.match(/class="project-intro"/g) ?? []).length >= 6);
   assert.match(html, /P0—P2 共 12 项尽调清单/);
   assert.match(html, /基于公开年报自行测算/);
+  assert.match(html, /\/portfolio\/transn\/01-overview\.png/);
   for (const route of detailRoutes) {
     assert.match(html, new RegExp(`href="${route}"`));
   }
   assert.doesNotMatch(
     html,
-    /resume\.docx|codex-preview|react-loading-skeleton|Building your site/i,
+    /resume\.docx|codex-preview|react-loading-skeleton|Building your site|六组案例按|展示内容遵循|公开边界|参与边界/i,
   );
 });
 
@@ -81,27 +82,18 @@ test("server-renders every internship detail page", async () => {
     assert.match(html, /INTERNSHIP EXPERIENCE/, route);
     assert.match(html, /href="\/resume\.pdf"/, route);
     assert.match(html, /href="\/#experience"/, route);
+    if (route === "/experience/shanghai-metals-market") {
+      assert.match(html, /代表性成果/);
+      assert.match(html, /\/portfolio\/nickel\/04-cost-model\.png/);
+    }
+    if (route === "/experience/foshan-platform-consulting") {
+      assert.match(html, /代表性成果/);
+      assert.match(html, /\/portfolio\/consulting\/01-method\.png/);
+    }
+    if (route === "/experience/country-market-entry" || route === "/experience/international-audit") {
+      assert.doesNotMatch(html, /class="evidence-gallery"/);
+    }
   }
-});
-
-test("server-renders the evidence-based portfolio page", async () => {
-  const response = await render("/portfolio/");
-  assert.equal(response.status, 200);
-  const html = await response.text();
-
-  assert.match(html, /成果展示/);
-  assert.match(html, /从全球镍数据到原料配比决策/);
-  assert.match(html, /从平台诊断到双轨落地/);
-  assert.match(html, /综合保税区扩能提质/);
-  assert.match(html, /飞机拆解与再制造项目可行性研究/);
-  assert.match(html, /从国别环境到产业落点/);
-  assert.match(html, /传神语联（835737\.NQ）投资分析案例/);
-  assert.match(html, /\/portfolio\/nickel\/04-cost-model\.png/);
-  assert.match(html, /\/portfolio\/consulting\/01-method\.png/);
-  assert.match(html, /\/portfolio\/transn\/06-checklist\.png/);
-  assert.match(html, /现场照片包含人员、车牌或敏感设施/);
-  assert.match(html, /原图含时点性数据和待复核口径/);
-  assert.doesNotMatch(html, /禅城城建_资产结构分析|需复核\.png/);
 });
 
 test("keeps required public assets and removes starter preview code", async () => {

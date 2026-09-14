@@ -9,6 +9,11 @@ export type Experience = {
   outcomes: string[];
   methods: string[];
   keywords: string[];
+  evidence?: {
+    src: string;
+    alt: string;
+    caption: string;
+  }[];
 };
 
 export const experiences: Experience[] = [
@@ -33,6 +38,13 @@ export const experiences: Experience[] = [
     ],
     methods: ["成本建模", "数据清洗与核对", "基本面跟踪", "可视化表达"],
     keywords: ["镍产业", "304 不锈钢", "Excel", "行业数据库"],
+    evidence: [
+      { src: "/portfolio/nickel/01-spread-and-hedging.png", alt: "纯镍与 NPI 价差及衍生品需求研究页", caption: "纯镍与 NPI 价差及衍生品需求" },
+      { src: "/portfolio/nickel/02-long-term-competition.png", alt: "纯镍与 NPI 长期竞争关系研究页", caption: "纯镍与 NPI 长期竞争关系" },
+      { src: "/portfolio/nickel/03-trade-flow.png", alt: "一级镍全球贸易流矩阵", caption: "2025 年一级镍全球贸易流矩阵" },
+      { src: "/portfolio/nickel/04-cost-model.png", alt: "304 不锈钢原料经济性模型仪表盘", caption: "304 不锈钢原料经济性模型" },
+      { src: "/portfolio/nickel/05-sensitivity.png", alt: "原料与工序敏感性综合排名", caption: "原料与工序敏感性分析" },
+    ],
   },
   {
     slug: "foshan-platform-consulting",
@@ -55,6 +67,14 @@ export const experiences: Experience[] = [
     ],
     methods: ["行业研究", "定性访谈", "问题归因", "战略规划"],
     keywords: ["泛家居出海", "平台战略", "企业访谈", "PPT"],
+    evidence: [
+      { src: "/portfolio/consulting/01-method.png", alt: "从调研诊断到路径规划的方法框架", caption: "从调研诊断到路径规划" },
+      { src: "/portfolio/consulting/02-positioning.png", alt: "双轨轻资产战略定位", caption: "双轨轻资产与价值锚点" },
+      { src: "/portfolio/consulting/03-market-priority.png", alt: "GCC 与东盟市场优先级矩阵", caption: "目标市场优先级矩阵" },
+      { src: "/portfolio/consulting/04-business-model.png", alt: "泛家居出海商业模式", caption: "泛家居出海三阶跃迁" },
+      { src: "/portfolio/consulting/05-strategy-synergy.png", alt: "战略协同三大抓手", caption: "三大抓手协同逻辑" },
+      { src: "/portfolio/consulting/06-deliverables.png", alt: "佛山优选项目交付框架", caption: "项目交付框架" },
+    ],
   },
   {
     slug: "country-market-entry",
